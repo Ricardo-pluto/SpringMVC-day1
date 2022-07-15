@@ -19,7 +19,9 @@
     <mvc:default-servlet-handler/>
     <!--开启mvc注解支持，@RequestMapping-->
     <mvc:annotation-driven></mvc:annotation-driven>
-    <!--_03全注解，扫描组件配置-->
-    <!--扫描组件-->
-    <context:component-scan base-package="org.RicardoPluto.controller._03allanno"></context:component-scan>
+
+    <bean name="/hello" class="org.RicardoPluto.controller._01hello.HelloController"></bean>
+
+   
+
 </beans>

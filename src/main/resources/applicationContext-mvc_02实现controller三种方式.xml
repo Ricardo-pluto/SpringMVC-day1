@@ -19,7 +19,14 @@
     <mvc:default-servlet-handler/>
     <!--开启mvc注解支持，@RequestMapping-->
     <mvc:annotation-driven></mvc:annotation-driven>
-    <!--_03全注解，扫描组件配置-->
-    <!--扫描组件-->
-    <context:component-scan base-package="org.RicardoPluto.controller._03allanno"></context:component-scan>
+
+    <bean name="/hello" class="org.RicardoPluto.controller._01hello.HelloController"></bean>
+
+    <!--实现controller三种方式：-->
+    <!--1实现controller接口-->
+    <bean name="/implControllerMethod01" class="org.RicardoPluto.controller._02implcontrollermethod.ImplControllerMethod01"></bean>
+    <!--2实现HttpRequestHandler接口-->
+    <bean name="/implControllerMethod02" class="org.RicardoPluto.controller._02implcontrollermethod.ImplControllerMethod02"></bean>
+    <!--3普通类+RequestMapping-->
+    <bean class="org.RicardoPluto.controller._02implcontrollermethod.ImplControllerMethod03"></bean>
 </beans>

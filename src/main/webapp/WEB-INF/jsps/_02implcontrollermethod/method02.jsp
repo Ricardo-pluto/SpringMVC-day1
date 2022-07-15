@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>实现controller方式1：实现controller接口</title>
+    <title>实现controller方式2：实现HttpRequestHandler接口</title>
 </head>
 <body>
 <h1>Hello</h1>
