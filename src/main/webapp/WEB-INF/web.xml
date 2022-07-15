@@ -1,0 +1,26 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+  <display-name>Archetype Created Web Application</display-name>
+  <!--配置核心控制器，如果不做配置文件的关联，默认查找/WEB-INF/dispatcherServlet-servlet.xml，找不到就报错-->
+  <servlet>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!--初始化参数：一般来说不使用配置文件的默认路径，可以通过init-param配置自定义路径-->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:applicationContext-mvc.xml</param-value>
+    </init-param>
+    <!--立即加载：作为容器核心，应该在启动时就创建并初始化-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>
