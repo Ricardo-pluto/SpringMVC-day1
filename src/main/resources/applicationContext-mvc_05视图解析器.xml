@@ -19,10 +19,14 @@
     <mvc:default-servlet-handler/>
     <!--开启mvc注解支持，@RequestMapping-->
     <mvc:annotation-driven></mvc:annotation-driven>
-    <!--   06扫描组件    -->
-    <context:component-scan base-package="org.RicardoPluto.controller._06pageGetParam"></context:component-scan>
+    <!--_03全注解，扫描组件配置-->
+    <!--扫描组件-->
+    <context:component-scan base-package="org.RicardoPluto.controller._03allanno"></context:component-scan>
+    <!--配置视图解析器，同时配置前缀和后缀-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀-->
         <property name="prefix" value="/WEB-INF/jsps/"></property>
+        <!--后缀-->
         <property name="suffix" value=".jsp"></property>
     </bean>
 </beans>

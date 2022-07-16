@@ -1,16 +1,18 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2022/7/16
-  Time: 16:01
+  Date: 2022/7/15
+  Time: 11:03
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>index</title>
+    <title>实现controller方式3：普通类+RequestMapping</title>
 </head>
 <body>
-<h2>横空出世，莽昆仑，阅尽人间春色。</h2>
+<h1>Hello</h1>
+六盘山上高峰，红旗漫卷西风
+<h2>${msg}</h2>
 </body>
 </html>

@@ -1,16 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2022/7/16
-  Time: 16:01
+  User: 33859
+  Date: 2022/7/15
+  Time: 23:03
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>index</title>
+    <title>三层架构全注解</title>
 </head>
 <body>
-<h2>横空出世，莽昆仑，阅尽人间春色。</h2>
+
 </body>
 </html>

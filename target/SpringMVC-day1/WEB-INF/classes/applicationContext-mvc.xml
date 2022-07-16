@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans
        https://www.springframework.org/schema/beans/spring-beans.xsd
@@ -10,7 +11,18 @@
        https://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/aop
        https://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd
 "
 >
-    <bean name="/hello" class="org.RicardoPluto.controller._01hello.HelloController"></bean>
+    <!--静态资源访问：开启默认servlet处理，就能够支持对静态资源，如html，css，jpg等资源的访问-->
+    <mvc:default-servlet-handler/>
+    <!--开启mvc注解支持，@RequestMapping-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <!--   06扫描组件    -->
+    <context:component-scan base-package="org.RicardoPluto.controller._06pageGetParam"></context:component-scan>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsps/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
 </beans>

@@ -1,0 +1,73 @@
+1 导入jar
+ <!--springmvc支持jar包，导入webmvc其实就已经导入web,它依赖于web-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.2.4.RELEASE</version>
+    </dependency>
+    <!--Servlet-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+   <!--jsp支持-->
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>2.2</version>
+      <scope>provided</scope>
+    </dependency>
+2 配置核心控制器
+   它是作为一个框架核心，有很多配置，用注解不太优美，所以在web.xml配置。
+   ，这个核心控制器需要先解析映射配置文件，才能通过映射关系找到controller，
+   所以要配置指向一个映射配置文件。
+   <!--配置核心控制器
+      1 关联映射配置文件，我们没有关联。其实它会默认到找/WEB-INF/dispatcherServlet-servlet.xml,没有找到就报错
+      2 一般来说不使用默认的，可以通过servlet初始化参数contextConfigLocation来指定
+     -->
+     <servlet>
+       <servlet-name>dispatcherServlet</servlet-name>
+       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+       <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>classpath:applicationContext-mvc.xml</param-value>
+       </init-param>
+       <!--作为框架核心，不能等到用户第一次访问在创建并初始化，应该Tomcat一启动就创建并初始化-->
+       <load-on-startup>1</load-on-startup>
+     </servlet>
+
+    <!-- 配置映射-->
+     <servlet-mapping>
+       <servlet-name>dispatcherServlet</servlet-name>
+       <url-pattern>/</url-pattern>
+     </servlet-mapping>
+3 写一个映射配置文件并配置controller+静态资源文件放行
+  1）写controller
+  2）配置controller
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:context="http://www.springframework.org/schema/context"
+         xmlns:aop="http://www.springframework.org/schema/aop"
+         xmlns:mvc="http://www.springframework.org/schema/mvc"
+         xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+          https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+          https://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/aop
+          https://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/mvc
+          https://www.springframework.org/schema/mvc/spring-mvc.xsd
+  "
+  >
+      <!--开启默认Servlet处理，就能支持静态资源html,css,js,image等-->
+      <mvc:default-servlet-handler/>
+
+      <bean name="/hello" class="com.ronghuanet.controller._01hello.HelloController"></bean>
+  </beans>
+4 启动项目并测试
+  http://localhost:8080/hello
